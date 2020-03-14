@@ -98,6 +98,9 @@ prepare_target_source_dirs()
   tar zxf "${CURRENTPATH}/${OPENSSL_ARCHIVE_FILE_NAME}" -C "${SOURCEDIR}"
   cd "${SOURCEDIR}/${OPENSSL_ARCHIVE_BASE_NAME}"
   chmod u+x ./Configure
+  sed -E -i.bak '/my @clang_devteam_warn = qw\(/a\
+    -Wno-overriding-t-option\
+' Configure
 }
 
 # Check for error status
